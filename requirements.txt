@@ -1,0 +1,10 @@
+Flask
+tensorflow
+numpy
+Pillow
+matplotlib
+roboflow
+supervision
+opencv-python
+requests
+inference-sdk

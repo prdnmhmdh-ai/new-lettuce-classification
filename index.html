@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="../assets/img/logos/Lettuce.png">
+<title>Computer Vision - Lettuce Growth | SMK Negeri 4 Barru</title>
+
+<!-- Fonts and icons -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- Material Icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+<!-- CSS Files -->
+<link id="pagestyle" href="./assets/css/material-kit.css?v=3.1.0" rel="stylesheet" />
+</head>
+
+<body class="index-page bg-gray-200">
+  
+  
+<!-- Navbar -->
+<div class="container position-sticky z-index-sticky top-0"><div class="row"><div class="col-12">
+<nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 p-2 start-0 end-0 mx-4">
+  <div class="container-fluid px-0">
+    <a class="navbar-brand font-weight-bolder ms-sm-3 text-sm" href="#" rel="tooltip" data-placement="bottom">
+      Lettuce Growth
+    </a>
+    <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon mt-2">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
+      <ul class="navbar-nav navbar-nav-hover ms-auto">
+        <li class="nav-item mx-2">
+          <a class="nav-link ps-2 d-flex cursor-pointer align-items-center font-weight-semibold" href="#features">
+            <i class="material-symbols-rounded opacity-6 me-2 text-md">dashboard</i>
+            Features
+          </a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link ps-2 d-flex cursor-pointer align-items-center font-weight-semibold" href="#missions">
+            <i class="material-symbols-rounded opacity-6 me-2 text-md">view_day</i>
+            Missions
+          </a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link ps-2 d-flex cursor-pointer align-items-center font-weight-semibold" href="#docs">
+            <i class="material-symbols-rounded opacity-6 me-2 text-md">article</i>
+            Docs
+          </a>
+        </li>
+        <li class="nav-item my-auto mx-2">
+          <a href="/disease" class="btn mb-0 mt-2 mt-md-0 bg-success text-white">Disease</a>
+        </li>
+        <li class="nav-item my-auto ms-3 ms-lg-0">
+          <a href="/harvest" class="btn mb-0 mt-2 mt-md-0 bg-success text-white">Harvest</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navbar -->
+</div></div></div>
+
+<header class="header-2">
+  <div class="page-header min-vh-75 relative" style="background-image: url('./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg')">
+    <span class="mask bg-gradient-dark opacity-4"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 text-center mx-auto">
+          <h1 class="text-white font-weight-black pt-3 mt-n5">Smart Lettuce Growth Detection</h1>
+          <p class="text-white mt-3">
+            Empower your farming decisions with AI. 
+            Instantly detect lettuce growth stages using computer vision to boost productivity and precision in the field.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+
+<section class="pt-3 pb-4" id="count-stats">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 mx-auto py-3">
+        <div class="row">
+          <div class="col-md-4 position-relative">
+            <div class="p-3 text-center">
+              <h1 class="text-gradient text-success"><span id="state1" countTo="4">0</span></h1>
+              <h5 class="mt-3">Growth Stages Detected</h5>
+              <p class="text-sm font-weight-normal">From early growth to harvest, each stage of your lettuce crop is accurately identified with AI.</p>
+            </div>
+            <hr class="vertical dark">
+          </div>
+          <div class="col-md-4 position-relative">
+            <div class="p-3 text-center">
+              <h1 class="text-gradient text-success"> <span id="state2" countTo="4">0</span></h1>
+              <h5 class="mt-3">Class of Classification</h5>
+              <p class="text-sm font-weight-normal">Detect signs of fungal and bacterial infections early to prevent crop loss and ensure quality.</p>
+            </div>
+            <hr class="vertical dark">
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 text-center">
+              <h1 class="text-gradient text-success" id="state3" countTo="24">0</h1>
+              <h5 class="mt-3">Real-Time Detection</h5>
+              <p class="text-sm font-weight-normal">AI-powered detection runs around the clock to support smarter, faster farm decisions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="features"></div>
+<section class="my-5 py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+        <div class="rotating-card-container">
+          <div class="card card-rotate card-background card-background-mask-primary shadow-dark mt-md-0 mt-5">
+            <div class="front front-background" style="background-image: url(./assets/img/background/quaritsch-photography-V0C6tLde058-unsplash.jpg); background-size: cover;">
+              <div class="card-body py-7 text-center">
+                <i class="material-symbols-rounded text-white text-4xl my-3">agriculture</i>
+                <h3 class="text-white">Monitor Your Crops Smartly</h3>
+                <p class="text-white opacity-8">Harness the power of AI to detect lettuce growth stages with precision, anytime, anywhere.</p>
+              </div>
+            </div>
+            <div class="back back-background" style="background-image: url(./assets/img/background/lulucmy-ag9e8ERp5cI-unsplash.jpg); background-size: cover;">
+              <div class="card-body pt-7 text-center">
+                <h3 class="text-white">AI-Powered Insights</h3>
+                <p class="text-white opacity-8">Get actionable data about growth stages and plant health,early, accurate, and visual.</p>
+                <a href="#detection-section" class="btn btn-white btn-sm w-50 mx-auto mt-3">Try Detection</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 ms-auto">
+        <div class="row justify-content-start">
+          <div class="col-md-6">
+            <div class="info">
+              <i class="material-symbols-rounded text-gradient text-success text-3xl">precision_manufacturing</i>
+              <h5 class="font-weight-bolder mt-3">Stage-Specific Accuracy</h5>
+              <p class="pe-5">Detect Early Growth, Leafy Expansion, Head Formation, and Harvest Stage with high accuracy using computer vision.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info">
+              <i class="material-symbols-rounded text-gradient text-success text-3xl">science</i>
+              <h5 class="font-weight-bolder mt-3">Disease Identification</h5>
+              <p class="pe-3">Identify early signs of fungal and bacterial infections before they spread across your farm.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-start mt-5">
+          <div class="col-md-6 mt-3">
+            <div class="info">
+              <i class="material-symbols-rounded text-gradient text-success text-3xl">speed</i>
+              <h5 class="font-weight-bolder mt-3">Real-Time Analysis</h5>
+              <p class="pe-5">Instant AI detection to support faster decisions and optimized harvest timing.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="info">
+              <i class="material-symbols-rounded text-gradient text-success text-3xl">cloud_done</i>
+              <h5 class="font-weight-bolder mt-3">Accessible Anywhere</h5>
+              <p class="pe-3">Use directly from your device with cloud-based image processing, no expensive tools needed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="missions"></div>
+<section class="py-5">
+  <div class="container">
+    <div class="row text-center my-sm-5 mt-5">
+      <div class="col-lg-6 mx-auto">
+        <span class="badge bg-success mb-3">Empowering Precision Agriculture</span>
+        <h2 class="">Our Mission with Lettuce Growth</h2>
+        <p class="lead">Lettuce Growth is committed to transforming modern farming by using computer vision to detect lettuce growth stages and early signs of disease. Our mission is to empower farmers with accessible AI tools, support data-driven decisions, and help achieve healthier, more productive harvests, all through real-time, image-based intelligence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row mt-4">
+          <!-- Card 1: Run Detection -->
+          <div class="col-md-6">
+            <a href="#detection-section">
+              <div class="card move-on-hover">
+                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="run-detection">
+              </div>
+              <div class="mt-2 ms-2">
+                <h6 class="mb-0">Run Lettuce Growth Detection</h6>
+              </div>
+            </a>
+          </div>
+
+          <!-- Card 2: Our Mission -->
+          <div class="col-md-6 mt-md-0 mt-5">
+            <a href="#mission">
+              <div class="card move-on-hover">
+                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="mission">
+              </div>
+              <div class="mt-2 ms-2">
+                <h6 class="mb-0">Our Mission for Smart Farming</h6>
+              </div>
+            </a>
+          </div>
+
+          <!-- Card 3: Explore Farming Resources -->
+          <div class="col-md-6 mt-md-3 mt-6">
+            <a href="#resources">
+              <div class="card move-on-hover">
+                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="resources">
+              </div>
+              <div class="mt-2 ms-2">
+                <h6 class="mb-0">Explore Smart Farming Resources</h6>
+              </div>
+            </a>
+          </div>
+
+          <!-- Card 4: Ethics & Data Use -->
+          <div class="col-md-6 mt-md-3 mt-6">
+            <a href="#ethics">
+              <div class="card move-on-hover">
+                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="ethics">
+              </div>
+              <div class="mt-2 ms-2">
+                <h6 class="mb-0">Our Ethics & Data Responsibility</h6>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Section: Mission Overview -->
+      <div class="col-md-3 mx-auto mt-md-0 mt-5">
+        <div class="position-sticky" style="top:100px !important">
+          <h4>Lettuce Growth Commitment to Precision Farming</h4>
+          <h6 class="text-secondary font-weight-normal">
+            At SmartLettuce, we are dedicated to supporting modern agriculture through accessible AI technology. Our goal is to help farmers monitor crop growth accurately, detect early signs of disease, and make data-driven decisions that lead to healthier harvests and more sustainable farming.
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="docs"></div>
+<div class="container mt-sm-5">
+  <div class="page-header py-6 py-md-5 my-sm-3 mb-3 border-radius-xl" style="background-image: url('./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg');" loading="lazy">
+    <span class="mask bg-gradient-dark"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 ms-lg-5">
+          <h4 class="text-white">Built for Precision Agriculture</h4>
+          <h1 class="text-white">Comprehensive Detection Guide</h1>
+          <p class="lead text-white opacity-8">Discover how SmartLettuce helps you monitor growth stages and plant health with real-time AI detection. Learn how to use the platform and make the most of your crop analysis.</p>
+          <a href="#features" class="text-white icon-move-right">
+            Explore Features
+            <i class="fas fa-arrow-right text-sm ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- Getting Started -->
+    <div class="col-lg-4">
+      <div class="info-horizontal bg-success border-radius-xl d-block d-md-flex p-4">
+        <i class="material-symbols-rounded text-white text-3xl">flag</i>
+        <div class="ps-0 ps-md-3 mt-3 mt-md-0">
+          <h5 class="text-white">Getting Started with SmartLettuce</h5>
+          <p class="text-white">Learn how to capture images, upload them, and receive instant AI analysis of lettuce growth stages and health conditions.</p>
+          <a href="#detection-section" class="text-white icon-move-right">
+            Start Detection
+            <i class="fas fa-arrow-right text-sm ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detection Strategies -->
+    <div class="col-lg-4 px-lg-1 mt-lg-0 mt-4">
+      <div class="info-horizontal bg-gray-100 border-radius-xl d-block d-md-flex p-4 h-100">
+        <i class="material-symbols-rounded text-gradient text-success text-3xl">precision_manufacturing</i>
+        <div class="ps-0 ps-md-3 mt-3 mt-md-0">
+          <h5>Detection Stages Explained</h5>
+          <p>SmartLettuce uses image-based AI to classify growth into Early Growth, Leafy Growth, Head Formation, and Harvest, plus detect fungal or bacterial symptoms.</p>
+          <a href="#features" class="text-success icon-move-right">
+            Read More
+            <i class="fas fa-arrow-right text-sm ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ethics & Data -->
+    <div class="col-lg-4 mt-lg-0 mt-4">
+      <div class="info-horizontal bg-gray-100 border-radius-xl d-block d-md-flex p-4">
+        <i class="material-symbols-rounded text-gradient text-success text-3xl">shield</i>
+        <div class="ps-0 ps-md-3 mt-3 mt-md-0">
+          <h5>Data Ethics & Transparency</h5>
+          <p>We prioritize farmers’ data privacy and ensure every image and analysis is used responsibly, transparently, and securely.</p>
+          <a href="#ethics" class="text-success icon-move-right">
+            Learn More
+            <i class="fas fa-arrow-right text-sm ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <h2 class="mb-0 font-weight-bolder">Trusted by over</h2>
+        <h2 class="text-gradient font-weight-bolder text-success mb-3">12,000+ Farmers & Agritech Users</h2>
+        <p class="lead">Thousands of farmers, agricultural researchers, and agritech companies trust SmartLettuce to monitor crop stages, detect plant diseases, and improve harvest outcomes with AI-powered insights.</p>
+      </div>
+    </div>
+    <div class="row mt-6">
+    <!-- Testimoni 1 -->
+    <div class="col-lg-4 col-md-8">
+      <div class="card card-plain">
+        <div class="card-body">
+          <div class="author">
+            <div class="name">
+              <h6 class="mb-0 font-weight-bolder">Muhammad Fardan</h6>
+              <div class="stats">
+                <i class="far fa-clock"></i> 2 days ago
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">"SmartLettuce sangat membantu saya memantau pertumbuhan tanaman. Setiap fase dari pertumbuhan selada bisa saya lihat dengan jelas, tanpa menebak-nebak lagi."</p>
+          <div class="rating mt-3">
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Testimoni 2 -->
+    <div class="col-lg-4 col-md-8 ms-md-auto">
+      <div class="card bg-success">
+        <div class="card-body">
+          <div class="author align-items-center">
+            <div class="name">
+              <h6 class="text-white mb-0 font-weight-bolder">Pak Marwan</h6>
+              <div class="stats text-white">
+                <i class="far fa-clock"></i> 1 week ago
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-white">"Dulu saya sering telat panen atau salah prediksi. Sejak pakai sistem ini, saya bisa tahu kapan waktu terbaik panen, bahkan saat ada gejala penyakit muncul."</p>
+          <div class="rating mt-3">
+            <i class="fas fa-star text-white"></i>
+            <i class="fas fa-star text-white"></i>
+            <i class="fas fa-star text-white"></i>
+            <i class="fas fa-star text-white"></i>
+            <i class="fas fa-star text-white"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Testimoni 3 -->
+    <div class="col-lg-4 col-md-8">
+      <div class="card card-plain">
+        <div class="card-body">
+          <div class="author">
+            <div class="name">
+              <h6 class="mb-0 font-weight-bolder">Putri Nirmala</h6>
+              <div class="stats">
+                <i class="far fa-clock"></i> 3 weeks ago
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">"Sebagai analis data pertanian, saya sangat terbantu dengan visualisasi hasil deteksi yang akurat dan cepat. Membantu mempercepat keputusan tanpa inspeksi manual."</p>
+          <div class="rating mt-3">
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+            <i class="fas fa-star text-success"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <hr class="horizontal dark my-5">
+    <div class="row">
+      <div class="col-3 d-flex justify-content-center">
+        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/Kemdikbud.png" alt="Logo">
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/Bima-dikti.svg" alt="Logo">
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <img class="img-fluid" style="max-width: 90%; object-fit: contain;" src="./assets/img/logos/JTIK.png" alt="Logo">
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/SMKNegeri4Barru.jpg" alt="Logo">
+      </div>
+    </div>
+</section>
+
+  <footer class="footer pt-5 mt-5">
+  <div class="container">
+    <div class=" row">
+      <div class="col-md-3 mb-4 ms-auto">
+        <div>
+          <a href="#home">
+            <img src="./assets/img/logos/Lettuce.png" class="mb-3 footer-logo" alt="main_logo">
+          </a>
+          <h6 class="font-weight-bolder mb-4">Lettuce Growth</h6>
+        </div>
+        <div>
+          <ul class="d-flex flex-row ms-n3 nav">
+            <li class="nav-item">
+              <a class="nav-link pe-1" href="https://www.facebook.com/LettuceGrowth" target="_blank">
+                <i class="fab fa-facebook text-lg opacity-8"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pe-1" href="https://twitter.com/LettuceGrowth" target="_blank">
+                <i class="fab fa-twitter text-lg opacity-8"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pe-1" href="https://www.instagram.com/LettuceGrowth" target="_blank">
+                <i class="fab fa-instagram text-lg opacity-8"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pe-1" href="https://www.linkedin.com/company/LettuceGrowth" target="_blank">
+                <i class="fab fa-linkedin text-lg opacity-8"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link pe-1" href="https://www.youtube.com/c/LettuceGrowth" target="_blank">
+                <i class="fab fa-youtube text-lg opacity-8"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-2 col-sm-6 col-6 mb-4">
+  <div>
+    <h6 class="text-sm">Company</h6>
+    <ul class="flex-column ms-n3 nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#about-us">
+          About Lettuce Growth
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#mission">
+          Our Mission
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#team">
+          Meet the Team
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#blog">
+          Blog
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-2 col-sm-6 col-6 mb-4">
+  <div>
+    <h6 class="text-sm">Resources</h6>
+    <ul class="flex-column ms-n3 nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#support">
+          Support Center
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#resources">
+          Lettuce Resources
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#affiliate-program">
+          Affiliate Program
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-2 col-sm-6 col-6 mb-4">
+  <div>
+    <h6 class="text-sm">Help & Support</h6>
+    <ul class="flex-column ms-n3 nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#contact-us">
+          Contact Us
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#faq">
+          FAQ
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#custom-help">
+          Personalized Support
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
+  <div>
+    <h6 class="text-sm">Legal</h6>
+    <ul class="flex-column ms-n3 nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#terms-conditions">
+          Terms & Conditions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#privacy-policy">
+          Privacy Policy
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#licenses">
+          Licenses
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      
+      <div class="col-12">
+      <div class="text-center">
+        <p class="text-dark my-4 text-sm font-weight-normal">
+          All rights reserved. Copyright © <script>document.write(new Date().getFullYear())</script> Lettuce Growth. Built with precision for sustainable farming and agricultural innovation.
+          Developed by <a href="#" target="_blank">Lettuce Growth Team</a>. Connect with us for technical support, farm insights, and partnership opportunities.
+        </p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</footer>
+
+<!--   Core JS Files   -->
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+
+<!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
+<script src="./assets/js/plugins/countup.min.js"></script>
+<script src="./assets/js/plugins/choices.min.js"></script>
+<script src="./assets/js/plugins/prism.min.js"></script>
+<script src="./assets/js/plugins/highlight.min.js"></script>
+<!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
+<script src="./assets/js/plugins/rellax.min.js"></script>
+<!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
+<script src="./assets/js/plugins/tilt.min.js"></script>
+<!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
+<script src="./assets/js/plugins/choices.min.js"></script>
+<!--  Google Maps Plugin    -->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+<script src="./assets/js/material-kit.min.js?v=3.1.0" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  if (document.getElementById('state1')) {
+    const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+    if (!countUp.error) {
+      countUp.start();
+    } else {
+      console.error(countUp.error);
+    }
+  }
+  if (document.getElementById('state2')) {
+    const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+    if (!countUp1.error) {
+      countUp1.start();
+    } else {
+      console.error(countUp1.error);
+    }
+  }
+  if (document.getElementById('state3')) {
+    const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+    if (!countUp2.error) {
+      countUp2.start();
+    } else {
+      console.error(countUp2.error);
+    };
+  }
+</script>
+
+</body>
+
+</html>
