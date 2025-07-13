@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-<link rel="icon" type="image/png" href="../assets/img/logos/Lettuce.png">
-<title>Computer Vision - Lettuce Growth | SMK Negeri 4 Barru</title>
+<link rel="icon" type="image/png" href="../assets/img/logos/Hidrotec.png">
+<title>Computer Vision - Hidrotec | SMK Negeri 4 Barru</title>
 
 <!-- Fonts and icons -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 p-2 start-0 end-0 mx-4">
   <div class="container-fluid px-0">
     <a class="navbar-brand font-weight-bolder ms-sm-3 text-sm" href="#" rel="tooltip" data-placement="bottom">
-      Lettuce Growth
+      Hidrotec
     </a>
     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon mt-2">
@@ -54,12 +54,6 @@
             Docs
           </a>
         </li>
-        <li class="nav-item my-auto mx-2">
-          <a href="/disease" class="btn mb-0 mt-2 mt-md-0 bg-success text-white">Disease</a>
-        </li>
-        <li class="nav-item my-auto ms-3 ms-lg-0">
-          <a href="/harvest" class="btn mb-0 mt-2 mt-md-0 bg-success text-white">Harvest</a>
-        </li>
       </ul>
     </div>
   </div>
@@ -73,11 +67,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7 text-center mx-auto">
-          <h1 class="text-white font-weight-black pt-3 mt-n5">Smart Lettuce Growth Detection</h1>
+          <h1 class="text-white font-weight-black pt-3 mt-n5">Pendeteksi Tanaman Selada Berbasis Computer Vision</h1>
           <p class="text-white mt-3">
-            Empower your farming decisions with AI. 
-            Instantly detect lettuce growth stages using computer vision to boost productivity and precision in the field.
+            Penerapan Teknologi Digital untuk Mendukung Pertanian Modern di Sekolah
           </p>
+          <div class="mt-4">
+            <a href="/harvest" class="btn btn-success btn-lg me-2">Deteksi Siap Panen</a>
+            <a href="/disease" class="btn btn-outline-light btn-lg">Deteksi Penyakit</a>
+          </div>
         </div>
       </div>
     </div>
@@ -93,25 +90,25 @@
         <div class="row">
           <div class="col-md-4 position-relative">
             <div class="p-3 text-center">
-              <h1 class="text-gradient text-success"><span id="state1" countTo="4">0</span></h1>
-              <h5 class="mt-3">Growth Stages Detected</h5>
-              <p class="text-sm font-weight-normal">From early growth to harvest, each stage of your lettuce crop is accurately identified with AI.</p>
+              <h1 class="text-gradient text-success"><span id="state1" countTo="2">0</span></h1>
+              <h5 class="mt-3">Kelas Deteksi Kesiapan Panen</h5>
+              <p class="text-sm font-weight-normal">Model Kesiapan Panen Menggunakan Model dari <a href="https://universe.roboflow.com/project-0rxid/aquaponic_polygan_test" class="text-success">Roboflow</a> dengan kelas Lettuce-Not-Ready-to-Harvest dan Lettuce-Ready-to-Harvest</p>
             </div>
             <hr class="vertical dark">
           </div>
           <div class="col-md-4 position-relative">
             <div class="p-3 text-center">
-              <h1 class="text-gradient text-success"> <span id="state2" countTo="4">0</span></h1>
-              <h5 class="mt-3">Class of Classification</h5>
-              <p class="text-sm font-weight-normal">Detect signs of fungal and bacterial infections early to prevent crop loss and ensure quality.</p>
+              <h1 class="text-gradient text-success"><span id="state2" countTo="2">0</span></h1>
+              <h5 class="mt-3">Kelas Deteksi Penyakit</h5>
+               <p class="text-sm font-weight-normal">Model Kesiapan Panen Menggunakan Model dari <a href="https://universe.roboflow.com/project-0rxid/aquaponic_polygan_disease_test" class="text-success">Roboflow</a> dengan kelas disease_lettuce dan normal_lettuce</p>
             </div>
             <hr class="vertical dark">
           </div>
           <div class="col-md-4">
             <div class="p-3 text-center">
               <h1 class="text-gradient text-success" id="state3" countTo="24">0</h1>
-              <h5 class="mt-3">Real-Time Detection</h5>
-              <p class="text-sm font-weight-normal">AI-powered detection runs around the clock to support smarter, faster farm decisions.</p>
+              <h5 class="mt-3">Deteksi Real-Time</h5>
+              <p class="text-sm font-weight-normal">Deteksi berbasis AI yang berjalan sepanjang waktu untuk mendukung keputusan pertanian yang lebih cerdas dan cepat.</p>
             </div>
           </div>
         </div>
@@ -121,24 +118,22 @@
 </section>
 
 <div id="features"></div>
-<section class="my-5 py-5">
+<section class="">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
+      <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4 mb-8">
         <div class="rotating-card-container">
           <div class="card card-rotate card-background card-background-mask-primary shadow-dark mt-md-0 mt-5">
             <div class="front front-background" style="background-image: url(./assets/img/background/quaritsch-photography-V0C6tLde058-unsplash.jpg); background-size: cover;">
-              <div class="card-body py-7 text-center">
-                <i class="material-symbols-rounded text-white text-4xl my-3">agriculture</i>
-                <h3 class="text-white">Monitor Your Crops Smartly</h3>
-                <p class="text-white opacity-8">Harness the power of AI to detect lettuce growth stages with precision, anytime, anywhere.</p>
+              <div class="card-body pt-7 text-center">
+                <h3 class="text-white">Check Kesiapan Panen</h3>
+                <p class="text-white opacity-8">Deteksi kesiapan panen tanaman selada dengan model berbasis AI dari Roboflow secara cepat dan akurat.</p>
               </div>
             </div>
             <div class="back back-background" style="background-image: url(./assets/img/background/lulucmy-ag9e8ERp5cI-unsplash.jpg); background-size: cover;">
               <div class="card-body pt-7 text-center">
-                <h3 class="text-white">AI-Powered Insights</h3>
-                <p class="text-white opacity-8">Get actionable data about growth stages and plant health,early, accurate, and visual.</p>
-                <a href="#detection-section" class="btn btn-white btn-sm w-50 mx-auto mt-3">Try Detection</a>
+                <h3 class="text-white">Check Penyakit Tanaman</h3>
+                <p class="text-white opacity-8">Deteksi kondisi penyakit tanaman selada dengan model berbasis AI dari Roboflow secara cepat dan akurat.</p>
               </div>
             </div>
           </div>
@@ -150,15 +145,15 @@
           <div class="col-md-6">
             <div class="info">
               <i class="material-symbols-rounded text-gradient text-success text-3xl">precision_manufacturing</i>
-              <h5 class="font-weight-bolder mt-3">Stage-Specific Accuracy</h5>
-              <p class="pe-5">Detect Early Growth, Leafy Expansion, Head Formation, and Harvest Stage with high accuracy using computer vision.</p>
+              <h5 class="font-weight-bolder mt-3">Deteksi Objek</h5>
+              <p class="pe-5">Deteksi objek menggunakan bondingbox dan penamaan kelas</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="info">
               <i class="material-symbols-rounded text-gradient text-success text-3xl">science</i>
-              <h5 class="font-weight-bolder mt-3">Disease Identification</h5>
-              <p class="pe-3">Identify early signs of fungal and bacterial infections before they spread across your farm.</p>
+              <h5 class="font-weight-bolder mt-3">Identifikasi Penyakit</h5>
+              <p class="pe-3">Identifikasi tanda-tanda awal infeksi jamur dan bakteri sebelum menyebar ke seluruh kebun Anda.</p>
             </div>
           </div>
         </div>
@@ -167,15 +162,15 @@
           <div class="col-md-6 mt-3">
             <div class="info">
               <i class="material-symbols-rounded text-gradient text-success text-3xl">speed</i>
-              <h5 class="font-weight-bolder mt-3">Real-Time Analysis</h5>
-              <p class="pe-5">Instant AI detection to support faster decisions and optimized harvest timing.</p>
+              <h5 class="font-weight-bolder mt-3">Analisis Real-Time</h5>
+              <p class="pe-5">Deteksi AI instan untuk mendukung keputusan yang lebih cepat dan pengoptimalan waktu panen.</p>
             </div>
           </div>
           <div class="col-md-6 mt-3">
             <div class="info">
               <i class="material-symbols-rounded text-gradient text-success text-3xl">cloud_done</i>
-              <h5 class="font-weight-bolder mt-3">Accessible Anywhere</h5>
-              <p class="pe-3">Use directly from your device with cloud-based image processing, no expensive tools needed.</p>
+              <h5 class="font-weight-bolder mt-3">Akses Dimana Saja</h5>
+              <p class="pe-3">Gunakan langsung dari perangkat Anda dengan pemrosesan gambar berbasis cloud, tanpa memerlukan alat mahal.</p>
             </div>
           </div>
         </div>
@@ -189,75 +184,9 @@
   <div class="container">
     <div class="row text-center my-sm-5 mt-5">
       <div class="col-lg-6 mx-auto">
-        <span class="badge bg-success mb-3">Empowering Precision Agriculture</span>
-        <h2 class="">Our Mission with Lettuce Growth</h2>
-        <p class="lead">Lettuce Growth is committed to transforming modern farming by using computer vision to detect lettuce growth stages and early signs of disease. Our mission is to empower farmers with accessible AI tools, support data-driven decisions, and help achieve healthier, more productive harvests, all through real-time, image-based intelligence.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row mt-4">
-          <!-- Card 1: Run Detection -->
-          <div class="col-md-6">
-            <a href="#detection-section">
-              <div class="card move-on-hover">
-                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="run-detection">
-              </div>
-              <div class="mt-2 ms-2">
-                <h6 class="mb-0">Run Lettuce Growth Detection</h6>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 2: Our Mission -->
-          <div class="col-md-6 mt-md-0 mt-5">
-            <a href="#mission">
-              <div class="card move-on-hover">
-                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="mission">
-              </div>
-              <div class="mt-2 ms-2">
-                <h6 class="mb-0">Our Mission for Smart Farming</h6>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 3: Explore Farming Resources -->
-          <div class="col-md-6 mt-md-3 mt-6">
-            <a href="#resources">
-              <div class="card move-on-hover">
-                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="resources">
-              </div>
-              <div class="mt-2 ms-2">
-                <h6 class="mb-0">Explore Smart Farming Resources</h6>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 4: Ethics & Data Use -->
-          <div class="col-md-6 mt-md-3 mt-6">
-            <a href="#ethics">
-              <div class="card move-on-hover">
-                <img class="w-100" src="./assets/img/background/bailey-heedick-WOrgNVcptD8-unsplash.jpg" alt="ethics">
-              </div>
-              <div class="mt-2 ms-2">
-                <h6 class="mb-0">Our Ethics & Data Responsibility</h6>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Section: Mission Overview -->
-      <div class="col-md-3 mx-auto mt-md-0 mt-5">
-        <div class="position-sticky" style="top:100px !important">
-          <h4>Lettuce Growth Commitment to Precision Farming</h4>
-          <h6 class="text-secondary font-weight-normal">
-            At SmartLettuce, we are dedicated to supporting modern agriculture through accessible AI technology. Our goal is to help farmers monitor crop growth accurately, detect early signs of disease, and make data-driven decisions that lead to healthier harvests and more sustainable farming.
-          </h6>
-        </div>
+        <span class="badge bg-success mb-3">Memberdayakan Pertanian Presisi</span>
+        <h2 class="">Misi Kami dengan Pertumbuhan Selada</h2>
+        <p class="lead">Website ini dikembangkan dari kegiatan Pengabdian Kepada Masyakat DRTPM 2025 Universitas Negeri Makassar, yang digunakan untuk mendukung edukasi dan digitalisasi pertanian di SMK Negeri 4 Barru menggunakan sistem deteksi berbasis Artificial Intelligence (AI) dengan model computer vision dari roboflow.</p>
       </div>
     </div>
   </div>
@@ -291,7 +220,7 @@
         <i class="material-symbols-rounded text-white text-3xl">flag</i>
         <div class="ps-0 ps-md-3 mt-3 mt-md-0">
           <h5 class="text-white">Getting Started with SmartLettuce</h5>
-          <p class="text-white">Learn how to capture images, upload them, and receive instant AI analysis of lettuce growth stages and health conditions.</p>
+          <p class="text-white">Learn how to capture images, upload them, and receive instant AI analysis of Hidrotec stages and health conditions.</p>
           <a href="#detection-section" class="text-white icon-move-right">
             Start Detection
             <i class="fas fa-arrow-right text-sm ms-1"></i>
@@ -413,32 +342,30 @@
     </div>
   </div>
     </div>
-    <hr class="horizontal dark my-5">
-    <div class="row">
-      <div class="col-3 d-flex justify-content-center">
-        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/Kemdikbud.png" alt="Logo">
-      </div>
-      <div class="col-3 d-flex justify-content-center">
-        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/Bima-dikti.svg" alt="Logo">
-      </div>
-      <div class="col-3 d-flex justify-content-center">
-        <img class="img-fluid" style="max-width: 90%; object-fit: contain;" src="./assets/img/logos/JTIK.png" alt="Logo">
-      </div>
-      <div class="col-3 d-flex justify-content-center">
-        <img class="img-fluid" style="max-width: 40%; object-fit: contain;" src="./assets/img/logos/SMKNegeri4Barru.jpg" alt="Logo">
-      </div>
-    </div>
 </section>
 
-  <footer class="footer pt-5 mt-5">
+  <footer class="footer pt-2">
+        <hr class="horizontal dark my-5">
   <div class="container">
     <div class=" row">
       <div class="col-md-3 mb-4 ms-auto">
         <div>
           <a href="#home">
-            <img src="./assets/img/logos/Lettuce.png" class="mb-3 footer-logo" alt="main_logo">
+            <img src="./assets/img/logos/Hidrotec.png" class="mb-3 footer-logo" alt="hidroteclogo">
           </a>
-          <h6 class="font-weight-bolder mb-4">Lettuce Growth</h6>
+          <a href="#">
+            <img src="./assets/img/logos/Kemdikbud.png" class="mb-3 footer-logo" alt="kemdikbudlogo">
+          </a>
+          <a href="#">
+            <img src="./assets/img/logos/Bima-dikti.svg" class="mb-3 footer-logo" alt="bimalogo">
+          </a>
+          <a href="#">
+            <img src="./assets/img/logos/JTIK.png" class="mb-3 footer-logo" alt="jtikunmlogo">
+          </a>
+          <a href="#">
+            <img src="./assets/img/logos/SMKNegeri4Barru.jpg" class="mb-3 footer-logo" alt="SMKNegeri4Barrulogo">
+          </a>
+          <h6 class="font-weight-bolder mb-4">Hidrotec</h6>
         </div>
         <div>
           <ul class="d-flex flex-row ms-n3 nav">
@@ -483,7 +410,7 @@
     <ul class="flex-column ms-n3 nav">
       <li class="nav-item">
         <a class="nav-link" href="#about-us">
-          About Lettuce Growth
+          About Hidrotec
         </a>
       </li>
 
@@ -580,11 +507,11 @@
 </div>
 
       
-      <div class="col-12">
+<div class="col-12">
       <div class="text-center">
         <p class="text-dark my-4 text-sm font-weight-normal">
-          All rights reserved. Copyright © <script>document.write(new Date().getFullYear())</script> Lettuce Growth. Built with precision for sustainable farming and agricultural innovation.
-          Developed by <a href="#" target="_blank">Lettuce Growth Team</a>. Connect with us for technical support, farm insights, and partnership opportunities.
+          All rights reserved. Copyright © <script>document.write(new Date().getFullYear())</script> Hidrotec. Built with precision for sustainable farming and agricultural innovation.
+          Developed by <a href="#" target="_blank">Hidrotec Team</a>. Connect with us for technical support, farm insights, and partnership opportunities.
         </p>
       </div>
     </div>
