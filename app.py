@@ -10,11 +10,23 @@ import cv2
 import traceback
 import numpy as np
 import requests
+from ultralytics import YOLO
 
 app = Flask(__name__, static_folder='assets')
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['RESULT_FOLDER'] = 'static/results'
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+
+try:
+    model = YOLO("lettucemodel.pt")
+    print("✅ Model 'lettucemodel.pt' berhasil dimuat.")
+except Exception as e:
+    print(f"❌ Gagal memuat model: {e}")
+    model = None
+
+for folder in [app.config['UPLOAD_FOLDER'], app.config['RESULT_FOLDER']]:
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
 CLIENT = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
@@ -64,8 +76,8 @@ def detectDisease():
 
         print("📦 Loading Roboflow...")
         rf = Roboflow(api_key="6OD1amgfXBOwuFLTWdVH")
-        project = rf.workspace().project("aquaponic_polygan_test")
-        model = project.version(2).model
+        project = rf.workspace().project("aquaponic_polygan_disease_test")
+        model = project.version(5).model
 
         print("🔍 Predicting...")
         result_json = model.predict(image_path, confidence=40).json()
@@ -188,6 +200,84 @@ def detectHarvest():
     except Exception as e:
         traceback.print_exc()
         return jsonify({"reply": f"❌ Error: {str(e)}"}), 500
+
+@app.route("/ourmodel", methods=['GET'])
+def ourmodelPage():
+    return render_template('ourmodel.html')
+
+@app.route('/ourmodel', methods=['POST'])
+def predict():
+    if model is None:
+        return jsonify({'error': 'Model tidak berhasil dimuat'}), 500
+
+    try:
+        # Simpan gambar dari kamera atau unggahan
+        if request.is_json and 'camera_image' in request.get_json():
+            data_url = request.get_json()['camera_image']
+            header, encoded = data_url.split(",", 1)
+            binary_data = base64.b64decode(encoded)
+            image = Image.open(BytesIO(binary_data)).convert("RGB")
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'camera_input.jpg')
+            image.save(image_path)
+        elif 'image' in request.files:
+            file = request.files['image']
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(image_path)
+            image = Image.open(image_path).convert("RGB")
+        else:
+            return jsonify({'error': 'Tidak ada gambar yang dikirim'}), 400
+
+        # Konversi ke NumPy array
+        image_np = np.array(image)
+        image_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
+
+        # Prediksi menggunakan YOLO
+        results = model(image_bgr)[0]  # YOLOv8 model inference
+
+        if results.boxes is None or len(results.boxes) == 0:
+            return jsonify({
+                'predictions': [],
+                'annotated_image': None,
+                'reply': '✅ Tidak ada objek yang terdeteksi.'
+            })
+
+        # Ambil hasil prediksi
+        boxes = results.boxes.xyxy.cpu().numpy()  # [x1, y1, x2, y2]
+        scores = results.boxes.conf.cpu().numpy()
+        class_ids = results.boxes.cls.cpu().numpy().astype(int)
+        class_names = model.names
+
+        predictions = []
+
+        # Gambar bounding box
+        for box, score, class_id in zip(boxes, scores, class_ids):
+            x1, y1, x2, y2 = map(int, box)
+            label = f"{class_names[class_id]} {score:.2f}"
+
+            predictions.append({
+                'class': class_names[class_id],
+                'confidence': float(score),
+                'box': [x1, y1, x2, y2]
+            })
+
+            # Draw box
+            cv2.rectangle(image_bgr, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(image_bgr, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5, (0, 255, 0), 2)
+
+        # Simpan hasil anotasi
+        output_filename = "result_" + os.path.basename(image_path)
+        output_path = os.path.join(app.config['RESULT_FOLDER'], output_filename)
+        cv2.imwrite(output_path, image_bgr)
+
+        return jsonify({
+            'predictions': predictions,
+            'annotated_image': f"/static/results/{output_filename}"
+        })
+
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
     
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5001)
