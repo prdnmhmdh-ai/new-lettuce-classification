@@ -83,18 +83,22 @@
     <div class="row">
         <div class="col-12">
             <h4 class="text-center">Deteksi Selada</h4>
-            <div class="text-center">
-                <button id="startCamera" class="btn btn-success">Gunakan Kamera</button>
-                <button id="uploadImage" class="btn btn-primary">Unggah Gambar</button>
+            <div class="d-flex justify-content-center flex-wrap gap-3 mt-3">
+                <button id="startCamera" class="btn btn-success btn-lg">Gunakan Kamera</button>
+                <button id="uploadImage" class="btn btn-primary btn-lg">Unggah Gambar</button>
             </div>
-            <div id="cameraPreview" class="mt-3" style="display:none;">
-                <video id="video" autoplay playsinline width="100%"></video>
+            <div id="cameraPreview" class="mt-4 text-center" style="display:none;">
+                <video id="video" autoplay playsinline width="100%" style="max-width: 600px; border-radius: 10px;"></video>
                 <canvas id="canvas" style="display:none;"></canvas>
-                <button id="takePhoto" class="btn btn-warning mt-3">Take Photo</button>
+                <div class="mt-3">
+                    <button id="takePhoto" class="btn btn-warning btn-lg">Ambil Gambar</button>
+                </div>
             </div>
-            <div id="imageUpload" style="display:none;">
-                <input type="file" id="fileInput" accept="image/*">
-                <button id="submitImage" class="btn btn-warning mt-3">Submit Image</button>
+            <div id="imageUpload" class="mt-4 d-flex flex-column align-items-center" style="display: none;">
+                <div class="mb-3 w-100 bg-light" style="max-width: 400px; border-radius: 10px;">
+                    <input class="form-control" type="file" id="fileInput" accept="image/*">
+                </div>
+                <button id="submitImage" class="btn btn-warning btn-lg">Submit Gambar</button>
             </div>
         </div>
     </div>
@@ -110,10 +114,13 @@
         <!-- Kolom kanan: Hasil JSON -->
         <div class="col-md-5">
           <div class="card shadow-sm border-0 p-3">
-            <h6 class="mb-2 font-weight-bold">Prediction Details</h6>
+            <h6 class="mb-2 font-weight-bold">Detail Prediksi</h6>
             <pre id="jsonResult" style="font-size: 0.85rem; background: #f8f9fa; padding: 10px; border-radius: 6px; height: 400px; overflow-y: auto;"></pre>
           </div>
         </div>
+      </div>
+      <div class="text-center mt-4">
+        <button id="removeImage" class="btn btn-danger">Hapus Hasil</button>
       </div>
     </div>
 </div>
@@ -327,6 +334,7 @@
     const takePhotoButton = document.getElementById("takePhoto");
     const fileInput = document.getElementById("fileInput");
     const submitImageButton = document.getElementById("submitImage");
+    const removeImageButton = document.getElementById("removeImage");
 
     let currentStream;
 
@@ -353,7 +361,7 @@
 
         const imageData = canvas.toDataURL("image/jpeg");
 
-        fetch('/disease', {
+        fetch('/harvest', {
             method: 'POST',
             body: JSON.stringify({ camera_image: imageData }),
             headers: {
@@ -380,7 +388,7 @@
             reader.onloadend = () => {
                 const imageData = reader.result;
 
-                fetch('/disease', {
+                fetch('/harvest', {
                     method: 'POST',
                     body: JSON.stringify({ camera_image: imageData }),
                     headers: {
@@ -394,13 +402,35 @@
 
                     if (result.annotated_image) {
                         const img = document.getElementById("annotatedImage");
-                        img.src = result.annotated_image;
+                        img.src = result.annotated_image + "?t=" + new Date().getTime();
                         img.style.display = "block";
                     }
                 })
                 .catch(error => console.error(error));
             };
             reader.readAsDataURL(file);
+        }
+    });
+
+    removeImageButton.addEventListener("click", () => {
+        detectionResult.style.display = "none";
+
+        const img = document.getElementById("annotatedImage");
+        img.src = "";
+        img.style.display = "none";
+        jsonResult.textContent = "";
+
+        fileInput.value = "";
+
+        startCameraButton.style.display = "inline-block";
+        uploadImageButton.style.display = "inline-block";
+
+        imageUpload.style.display = "none";
+        cameraPreview.style.display = "none";
+
+        if (currentStream) {
+            currentStream.getTracks().forEach(track => track.stop());
+            currentStream = null;
         }
     });
 </script>

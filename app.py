@@ -1,15 +1,15 @@
 import os
 import base64
-from flask import Flask, send_from_directory, render_template, request, jsonify
-from inference_sdk import InferenceHTTPClient
-from PIL import Image
-from io import BytesIO
-from roboflow import Roboflow
 import supervision as sv
 import cv2
 import traceback
 import numpy as np
 import requests
+from flask import Flask, send_from_directory, render_template, request, jsonify
+from inference_sdk import InferenceHTTPClient
+from PIL import Image
+from io import BytesIO
+from roboflow import Roboflow
 from ultralytics import YOLO
 
 app = Flask(__name__, static_folder='assets')
@@ -227,12 +227,10 @@ def predict():
         else:
             return jsonify({'error': 'Tidak ada gambar yang dikirim'}), 400
 
-        # Konversi ke NumPy array
         image_np = np.array(image)
         image_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
 
-        # Prediksi menggunakan YOLO
-        results = model(image_bgr)[0]  # YOLOv8 model inference
+        results = model(image_bgr)[0]
 
         if results.boxes is None or len(results.boxes) == 0:
             return jsonify({
@@ -241,15 +239,13 @@ def predict():
                 'reply': '✅ Tidak ada objek yang terdeteksi.'
             })
 
-        # Ambil hasil prediksi
-        boxes = results.boxes.xyxy.cpu().numpy()  # [x1, y1, x2, y2]
+        boxes = results.boxes.xyxy.cpu().numpy()
         scores = results.boxes.conf.cpu().numpy()
         class_ids = results.boxes.cls.cpu().numpy().astype(int)
         class_names = model.names
 
         predictions = []
 
-        # Gambar bounding box
         for box, score, class_id in zip(boxes, scores, class_ids):
             x1, y1, x2, y2 = map(int, box)
             label = f"{class_names[class_id]} {score:.2f}"
@@ -260,12 +256,10 @@ def predict():
                 'box': [x1, y1, x2, y2]
             })
 
-            # Draw box
             cv2.rectangle(image_bgr, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.putText(image_bgr, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX,
                         0.5, (0, 255, 0), 2)
 
-        # Simpan hasil anotasi
         output_filename = "result_" + os.path.basename(image_path)
         output_path = os.path.join(app.config['RESULT_FOLDER'], output_filename)
         cv2.imwrite(output_path, image_bgr)
