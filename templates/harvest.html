@@ -377,9 +377,15 @@
     });
 
     uploadImageButton.addEventListener("click", () => {
-        cameraPreview.style.display = "none";
+        uploadImageButton.style.display = "none";
+        startCameraButton.style.display = "none";
+        
         imageUpload.style.display = "block";
+        fileInput.parentElement.style.display = "block";
+        submitImageButton.style.display = "block";
     });
+
+    fileInput.parentElement.style.display = "none";
 
     submitImageButton.addEventListener("click", () => {
         const file = fileInput.files[0];
@@ -426,6 +432,43 @@
         uploadImageButton.style.display = "inline-block";
 
         imageUpload.style.display = "none";
+        cameraPreview.style.display = "none";
+
+        if (currentStream) {
+            currentStream.getTracks().forEach(track => track.stop());
+            currentStream = null;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        imageUpload.style.display = "none";
+        submitImageButton.style.display = "none";
+        fileInput.parentElement.style.display = "none";
+    });
+
+    uploadImageButton.addEventListener("click", () => {
+        uploadImageButton.style.display = "none";
+        startCameraButton.style.display = "none";
+        
+        imageUpload.style.display = "block";
+        submitImageButton.style.display = "block";
+    });
+
+    removeImageButton.addEventListener("click", () => {
+        detectionResult.style.display = "none";
+
+        const img = document.getElementById("annotatedImage");
+        img.src = "";
+        img.style.display = "none";
+        jsonResult.textContent = "";
+
+        fileInput.value = "";
+
+        startCameraButton.style.display = "inline-block";
+        uploadImageButton.style.display = "inline-block";
+
+        imageUpload.style.display = "none";
+        submitImageButton.style.display = "none";
         cameraPreview.style.display = "none";
 
         if (currentStream) {
