@@ -1,10 +1,9 @@
 Flask
-tensorflow
+opencv-python-headless
 numpy
 Pillow
-matplotlib
-roboflow
-supervision
-opencv-python
 requests
+supervision
+ultralytics
+roboflow
 inference-sdk
