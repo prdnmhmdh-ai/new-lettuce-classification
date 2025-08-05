@@ -30,7 +30,7 @@ for folder in [app.config['UPLOAD_FOLDER'], app.config['RESULT_FOLDER']]:
 
 CLIENT = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
-    api_key="6OD1amgfXBOwuFLTWdVH"
+    api_key="J49e7iMvb8CnukKawB0a"
 )
 
 for folder in [app.config['UPLOAD_FOLDER'], app.config['RESULT_FOLDER']]:
